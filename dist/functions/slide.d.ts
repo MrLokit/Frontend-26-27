@@ -1,0 +1,12 @@
+import type { Presentation } from '../types/presentation.js';
+import type { Slide } from '../types/slide.js';
+declare function addSlide(presentation: Presentation, slideName?: string): Presentation;
+declare function removeSlides(presentation: Presentation, slideIds: string[]): Presentation;
+declare function moveSlide(presentation: Presentation, slideId: string, newIndex: number): Presentation;
+declare function setActiveSlide(presentation: Presentation, slideId: string): Presentation;
+declare function duplicateSlide(presentation: Presentation, slideId: string): Presentation;
+declare function setSlideBackgroundColor(slide: Slide, color: string): Slide;
+declare function setSlideBackgroundImage(slide: Slide, imageUrl: string): Slide;
+declare function setSlideBackgroundGradient(slide: Slide, colors: string[], angle?: number): Slide;
+declare function clearSlideBackground(slide: Slide): Slide;
+export { addSlide, removeSlides, moveSlide, setActiveSlide, duplicateSlide, setSlideBackgroundColor, setSlideBackgroundImage, setSlideBackgroundGradient, clearSlideBackground, };
