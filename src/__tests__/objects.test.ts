@@ -69,7 +69,7 @@ describe('removeObject', () => {
         const firstId = slide.objects[0].id;
         const updated = removeObject(slide, firstId);
         expect(updated.objects.length).toBe(1);
-        expect(updated.objects[0].content).toBe('B');
+        expect(updated.objects[0]).toMatchObject({ content: 'B' });
     });
 
     it('ничего не делает, если id не найден', () => {

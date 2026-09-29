@@ -2,23 +2,25 @@ import type { Presentation } from '../types/presentation.js';
 import type { Slide } from '../types/slide.js';
 
 function generateId(): string {
+/* Генерирует "случайный" айди */
     const timestamp = Date.now().toString(36);
     const randomPart = Math.random().toString(36).substring(2, 8);
     return `${timestamp}-${randomPart}`;
 }
 
-function createEmptySlide(name: string): Slide {
+function createDefaultSlide(slideName: string): Slide {
+/* Создает пустой слайд с передаваемым именем */
     return {
         id: generateId(),
-        name,
+        name: slideName,
         background: { type: 'none' },
         objects: [],
     };
 }
 
 function addSlide(presentation: Presentation, slideName?: string): Presentation {
-    const name = slideName || `Слайд ${presentation.slides.length + 1}`;
-    const newSlide = createEmptySlide(name);
+/* Добавление нового слайда. Имя не обязательно передавать */
+    const newSlide = createDefaultSlide(slideName || `Слайд ${presentation.slides.length + 1}`);
     return {
         ...presentation,
         slides: [...presentation.slides, newSlide],
@@ -26,6 +28,7 @@ function addSlide(presentation: Presentation, slideName?: string): Presentation 
 }
 
 function removeSlides(presentation: Presentation, slideIds: string[]): Presentation {
+/* Удаляет несколько слайдов */
     return {
         ...presentation,
         slides: presentation.slides.filter((slide) => !slideIds.includes(slide.id)),
@@ -33,6 +36,7 @@ function removeSlides(presentation: Presentation, slideIds: string[]): Presentat
 }
 
 function moveSlide(presentation: Presentation, slideId: string, newIndex: number): Presentation {
+/* Перемещаем слайд */
     const currentIndex = presentation.slides.findIndex((slide) => slide.id === slideId);
     if (currentIndex === -1) {
         return presentation;
@@ -47,6 +51,7 @@ function moveSlide(presentation: Presentation, slideId: string, newIndex: number
 }
 
 function setActiveSlide(presentation: Presentation, slideId: string): Presentation {
+/* Помечаем активный слайд */
     return {
         ...presentation,
         activeSlideId: slideId,
@@ -54,6 +59,7 @@ function setActiveSlide(presentation: Presentation, slideId: string): Presentati
 }
 
 function duplicateSlide(presentation: Presentation, slideId: string): Presentation {
+/* Дублируем слайд сразу после выбранного */
     const slide = presentation.slides.find((item) => item.id === slideId);
     if (!slide) {
         return presentation;
@@ -73,6 +79,7 @@ function duplicateSlide(presentation: Presentation, slideId: string): Presentati
 }
 
 function setSlideBackgroundColor(slide: Slide, color: string): Slide {
+/* Меняем цвет фона */
     return {
         ...slide,
         background: { type: 'color', color },
@@ -80,6 +87,7 @@ function setSlideBackgroundColor(slide: Slide, color: string): Slide {
 }
 
 function setSlideBackgroundImage(slide: Slide, imageUrl: string): Slide {
+/* Меняем изображение на фоне */
     return {
         ...slide,
         background: { type: 'image', url: imageUrl },
@@ -87,6 +95,7 @@ function setSlideBackgroundImage(slide: Slide, imageUrl: string): Slide {
 }
 
 function setSlideBackgroundGradient(slide: Slide, colors: string[], angle: number = 0): Slide {
+/* Меняем фон на градиент */
     return {
         ...slide,
         background: { type: 'gradient', colors, angle },
@@ -94,6 +103,7 @@ function setSlideBackgroundGradient(slide: Slide, colors: string[], angle: numbe
 }
 
 function clearSlideBackground(slide: Slide): Slide {
+/* Меняем фон на дефолт */
     return {
         ...slide,
         background: { type: 'none' },

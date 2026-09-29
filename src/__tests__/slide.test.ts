@@ -89,7 +89,7 @@ describe('moveSlide', () => {
         expect(updated.slides[1].id).toBe(firstId);
     });
 
-    it('возвращает ту же презентацию, если id не найден', () => {
+    it('возвращает ту же презентацию, если айди не найден', () => {
         const p = createPresentation('Тест');
         const updated = moveSlide(p, 'unknown', 0);
         expect(updated).toEqual(p);
@@ -124,14 +124,14 @@ describe('duplicateSlide', () => {
         expect(updated.slides[1].name).toBe(p.slides[0].name);
     });
 
-    it('копия имеет новый id', () => {
+    it('копия имеет новый айди', () => {
         const p = createPresentation('Тест');
         const originalId = p.slides[0].id;
         const updated = duplicateSlide(p, originalId);
         expect(updated.slides[1].id).not.toBe(originalId);
     });
 
-    it('возвращает ту же презентацию, если id не найден', () => {
+    it('возвращает ту же презентацию, если айди не найден', () => {
         const p = createPresentation('Тест');
         const updated = duplicateSlide(p, 'unknown');
         expect(updated).toEqual(p);
