@@ -1,26 +1,34 @@
-type TextObject = {
+type BaseSlideObject = {
     id: string;
-    type: 'text';
-    content: string;
     x: number;
     y: number;
     width: number;
     height: number;
+};
+
+type TextObject = BaseSlideObject & {
+    type: 'text';
+    content: string;
     fontFamily: string;
     fontSize: number;
     fontColor: string;
 };
 
-type ImageObject = {
-    id: string;
+type ImageObject = BaseSlideObject & {
     type: 'image';
     url: string;
-    x: number;
-    y: number;
-    width: number;
-    height: number;
 };
 
 type SlideObject = TextObject | ImageObject;
 
-export { SlideObject, TextObject, ImageObject };
+type TextObjectData = Omit<TextObject, 'id' | 'type'>;
+type ImageObjectData = Omit<ImageObject, 'id' | 'type'>;
+
+export {
+    BaseSlideObject,
+    TextObject,
+    ImageObject,
+    SlideObject,
+    TextObjectData,
+    ImageObjectData,
+};

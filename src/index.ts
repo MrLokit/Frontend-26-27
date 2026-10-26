@@ -1,6 +1,13 @@
 export type { Presentation } from './types/presentation.js';
 export type { Slide, Background } from './types/slide.js';
-export type { SlideObject, TextObject, ImageObject } from './types/objects.js';
+export type {
+    BaseSlideObject,
+    TextObject,
+    ImageObject,
+    SlideObject,
+    TextObjectData,
+    ImageObjectData,
+} from './types/objects.js';
 
 export {
     createPresentation,
@@ -13,7 +20,6 @@ export {
     addSlide,
     removeSlides,
     moveSlide,
-    setActiveSlide,
     duplicateSlide,
     setSlideBackgroundColor,
     setSlideBackgroundImage,

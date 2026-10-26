@@ -20,11 +20,9 @@ function createPresentation(name) {
         id: generateId(),
         name,
         slides: [firstSlide],
-        activeSlideId: firstSlide.id,
     };
 }
 function updatePresentationName(presentation, name) {
-    /* Переименование презентации */
     return {
         ...presentation,
         name,

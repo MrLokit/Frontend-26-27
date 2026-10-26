@@ -3,7 +3,6 @@ import {
     addSlide,
     removeSlides,
     moveSlide,
-    setActiveSlide,
     duplicateSlide,
     setSlideBackgroundColor,
     setSlideBackgroundImage,
@@ -93,24 +92,6 @@ describe('moveSlide', () => {
         const p = createPresentation('Тест');
         const updated = moveSlide(p, 'unknown', 0);
         expect(updated).toEqual(p);
-    });
-});
-
-describe('setActiveSlide', () => {
-    it('меняет активный слайд', () => {
-        let p = createPresentation('Тест');
-        p = addSlide(p, 'Второй');
-        const secondId = p.slides[1].id;
-        const updated = setActiveSlide(p, secondId);
-        expect(updated.activeSlideId).toBe(secondId);
-    });
-
-    it('не мутирует оригинал', () => {
-        let p = createPresentation('Тест');
-        p = addSlide(p, 'Второй');
-        const oldActive = p.activeSlideId;
-        setActiveSlide(p, p.slides[1].id);
-        expect(p.activeSlideId).toBe(oldActive);
     });
 });
 

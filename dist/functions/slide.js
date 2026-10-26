@@ -22,14 +22,12 @@ function addSlide(presentation, slideName) {
     };
 }
 function removeSlides(presentation, slideIds) {
-    /* Удаляет несколько слайдов */
     return {
         ...presentation,
         slides: presentation.slides.filter((slide) => !slideIds.includes(slide.id)),
     };
 }
 function moveSlide(presentation, slideId, newIndex) {
-    /* Перемещаем слайд */
     const currentIndex = presentation.slides.findIndex((slide) => slide.id === slideId);
     if (currentIndex === -1) {
         return presentation;
@@ -40,13 +38,6 @@ function moveSlide(presentation, slideId, newIndex) {
     return {
         ...presentation,
         slides: slidesCopy,
-    };
-}
-function setActiveSlide(presentation, slideId) {
-    /* Помечаем активный слайд */
-    return {
-        ...presentation,
-        activeSlideId: slideId,
     };
 }
 function duplicateSlide(presentation, slideId) {
@@ -69,31 +60,27 @@ function duplicateSlide(presentation, slideId) {
     };
 }
 function setSlideBackgroundColor(slide, color) {
-    /* Меняем цвет фона */
     return {
         ...slide,
         background: { type: 'color', color },
     };
 }
 function setSlideBackgroundImage(slide, imageUrl) {
-    /* Меняем изображение на фоне */
     return {
         ...slide,
         background: { type: 'image', url: imageUrl },
     };
 }
 function setSlideBackgroundGradient(slide, colors, angle = 0) {
-    /* Меняем фон на градиент */
     return {
         ...slide,
         background: { type: 'gradient', colors, angle },
     };
 }
 function clearSlideBackground(slide) {
-    /* Меняем фон на дефолт */
     return {
         ...slide,
         background: { type: 'none' },
     };
 }
-export { addSlide, removeSlides, moveSlide, setActiveSlide, duplicateSlide, setSlideBackgroundColor, setSlideBackgroundImage, setSlideBackgroundGradient, clearSlideBackground, };
+export { addSlide, removeSlides, moveSlide, duplicateSlide, setSlideBackgroundColor, setSlideBackgroundImage, setSlideBackgroundGradient, clearSlideBackground, };

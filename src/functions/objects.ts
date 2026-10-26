@@ -1,5 +1,5 @@
 import type { Slide } from '../types/slide.js';
-import type { TextObject, ImageObject } from '../types/objects.js';
+import type { TextObject, ImageObject, TextObjectData, ImageObjectData } from '../types/objects.js';
 
 function generateId(): string {
 /* Генерирует "случайный" айди */
@@ -8,30 +8,11 @@ function generateId(): string {
     return `${timestamp}-${randomPart}`;
 }
 
-function addTextBox(
-/* Добавляет новый текст на слайд */
-    slide: Slide,
-    content: string,
-    x: number,
-    y: number,
-    width: number,
-    height: number,
-    fontFamily: string,
-    fontSize: number,
-    fontColor: string
-): Slide {
-/* Обьект - надпись */
+function addTextBox(slide: Slide, data: TextObjectData): Slide {
     const newObject: TextObject = {
+        ...data,
         id: generateId(),
         type: 'text',
-        content,
-        x,
-        y,
-        width,
-        height,
-        fontFamily,
-        fontSize,
-        fontColor,
     };
     return {
         ...slide,
@@ -39,24 +20,11 @@ function addTextBox(
     };
 }
 
-function addImageObject(
-/* Добавляет картинку на слайд */
-    slide: Slide,
-    imageUrl: string,
-    x: number,
-    y: number,
-    width: number,
-    height: number
-): Slide {
-/* Объект - изображение */
+function addImageObject(slide: Slide, data: ImageObjectData): Slide {
     const newObject: ImageObject = {
+        ...data,
         id: generateId(),
         type: 'image',
-        url: imageUrl,
-        x,
-        y,
-        width,
-        height,
     };
     return {
         ...slide,
@@ -65,7 +33,6 @@ function addImageObject(
 }
 
 function removeObject(slide: Slide, objectId: string): Slide {
-/* Удаляем объект по айди */
     return {
         ...slide,
         objects: slide.objects.filter((obj) => obj.id !== objectId),
@@ -73,7 +40,6 @@ function removeObject(slide: Slide, objectId: string): Slide {
 }
 
 function moveObject(slide: Slide, objectId: string, newX: number, newY: number): Slide {
-/* Меняет координаты объекта по айди, Х и Y */
     return {
         ...slide,
         objects: slide.objects.map((obj) =>
@@ -83,7 +49,6 @@ function moveObject(slide: Slide, objectId: string, newX: number, newY: number):
 }
 
 function resizeObject(slide: Slide, objectId: string, newWidth: number, newHeight: number): Slide {
-/* Меняет размер объекта */
     return {
         ...slide,
         objects: slide.objects.map((obj) =>
@@ -93,7 +58,6 @@ function resizeObject(slide: Slide, objectId: string, newWidth: number, newHeigh
 }
 
 function updateTextBoxStyle(
-/* Меняет стиль текста */
     slide: Slide,
     objectId: string,
     fontFamily: string,

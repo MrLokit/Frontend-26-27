@@ -25,10 +25,9 @@ function addSlide(presentation: Presentation, slideName?: string): Presentation 
         ...presentation,
         slides: [...presentation.slides, newSlide],
     };
-}
+} 
 
 function removeSlides(presentation: Presentation, slideIds: string[]): Presentation {
-/* Удаляет несколько слайдов */
     return {
         ...presentation,
         slides: presentation.slides.filter((slide) => !slideIds.includes(slide.id)),
@@ -36,7 +35,6 @@ function removeSlides(presentation: Presentation, slideIds: string[]): Presentat
 }
 
 function moveSlide(presentation: Presentation, slideId: string, newIndex: number): Presentation {
-/* Перемещаем слайд */
     const currentIndex = presentation.slides.findIndex((slide) => slide.id === slideId);
     if (currentIndex === -1) {
         return presentation;
@@ -47,14 +45,6 @@ function moveSlide(presentation: Presentation, slideId: string, newIndex: number
     return {
         ...presentation,
         slides: slidesCopy,
-    };
-}
-
-function setActiveSlide(presentation: Presentation, slideId: string): Presentation {
-/* Помечаем активный слайд */
-    return {
-        ...presentation,
-        activeSlideId: slideId,
     };
 }
 
@@ -79,7 +69,6 @@ function duplicateSlide(presentation: Presentation, slideId: string): Presentati
 }
 
 function setSlideBackgroundColor(slide: Slide, color: string): Slide {
-/* Меняем цвет фона */
     return {
         ...slide,
         background: { type: 'color', color },
@@ -87,7 +76,6 @@ function setSlideBackgroundColor(slide: Slide, color: string): Slide {
 }
 
 function setSlideBackgroundImage(slide: Slide, imageUrl: string): Slide {
-/* Меняем изображение на фоне */
     return {
         ...slide,
         background: { type: 'image', url: imageUrl },
@@ -95,7 +83,6 @@ function setSlideBackgroundImage(slide: Slide, imageUrl: string): Slide {
 }
 
 function setSlideBackgroundGradient(slide: Slide, colors: string[], angle: number = 0): Slide {
-/* Меняем фон на градиент */
     return {
         ...slide,
         background: { type: 'gradient', colors, angle },
@@ -103,7 +90,6 @@ function setSlideBackgroundGradient(slide: Slide, colors: string[], angle: numbe
 }
 
 function clearSlideBackground(slide: Slide): Slide {
-/* Меняем фон на дефолт */
     return {
         ...slide,
         background: { type: 'none' },
@@ -114,7 +100,6 @@ export {
     addSlide,
     removeSlides,
     moveSlide,
-    setActiveSlide,
     duplicateSlide,
     setSlideBackgroundColor,
     setSlideBackgroundImage,

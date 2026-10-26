@@ -19,11 +19,6 @@ describe('createPresentation', () => {
         expect(presentation.slides[0].name).toBe('Слайд 1');
     });
 
-    it('активный слайд - первый', () => {
-        const presentation = createPresentation('Тест');
-        expect(presentation.activeSlideId).toBe(presentation.slides[0].id);
-    });
-
     it('генерирует уникальный айди', () => {
         const first = createPresentation('A');
         const second = createPresentation('B');
@@ -49,7 +44,6 @@ describe('updatePresentationName', () => {
         const updated = updatePresentationName(original, 'Новое');
         expect(updated.id).toBe(original.id);
         expect(updated.slides).toEqual(original.slides);
-        expect(updated.activeSlideId).toBe(original.activeSlideId);
     });
 });
 
