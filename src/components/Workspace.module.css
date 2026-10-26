@@ -1,0 +1,21 @@
+.workspace {
+    display: flex;
+    flex: 1;
+    background-color: #e8e8e8;
+    padding: 24px;
+    gap: 24px;
+    overflow: auto;
+}
+
+.canvasArea {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.empty {
+    color: #888;
+    font-size: 18px;
+    margin: auto;
+}

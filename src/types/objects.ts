@@ -24,7 +24,7 @@ type SlideObject = TextObject | ImageObject;
 type TextObjectData = Omit<TextObject, 'id' | 'type'>;
 type ImageObjectData = Omit<ImageObject, 'id' | 'type'>;
 
-export {
+export type {
     BaseSlideObject,
     TextObject,
     ImageObject,

@@ -1,0 +1,12 @@
+.textObject {
+    display: flex;
+    align-items: flex-start;
+    word-break: break-word;
+    /* Убираем стандартные отступы для точного позиционирования */
+    margin: 0;
+    padding: 0;
+}
+
+.imageObject {
+    object-fit: cover;
+}

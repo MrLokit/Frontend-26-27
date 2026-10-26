@@ -6,4 +6,4 @@ type Presentation = {
     slides: Slide[];
 };
 
-export { Presentation };
+export type { Presentation };
