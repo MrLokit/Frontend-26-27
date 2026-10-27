@@ -1,3 +1,4 @@
+// Рисует слайд
 import type { Slide } from '../index.js';
 import { SlideObject } from './SlideObject.js';
 import styles from './SlidePreview.module.css';
@@ -8,10 +9,8 @@ interface SlidePreviewProps {
 }
 
 function SlidePreview({ slide, isThumbnail = false }: SlidePreviewProps) {
-    // Динамически формируем стили для фона
     const backgroundStyles: React.CSSProperties = {};
 
-    // Обрабатываем все варианты фона из union-типа
     if (slide.background.type === 'color') {
         backgroundStyles.backgroundColor = slide.background.color;
     } else if (slide.background.type === 'image') {
@@ -20,14 +19,21 @@ function SlidePreview({ slide, isThumbnail = false }: SlidePreviewProps) {
         backgroundStyles.backgroundPosition = 'center';
     }
 
+    const innerStyles: React.CSSProperties = isThumbnail 
+        ? { transform: 'scale(0.2)', transformOrigin: 'top left', width: '800px', height: '450px' } 
+        : {};
+
+
     return (
         <div 
             className={`${styles.slide} ${isThumbnail ? styles.thumbnail : ''}`} 
             style={backgroundStyles}
         >
-            {slide.objects.map((obj) => (
-                <SlideObject key={obj.id} object={obj} />
-            ))}
+            <div style={innerStyles}>
+                {slide.objects.map((obj) => (
+                    <SlideObject key={obj.id} object={obj} />
+                ))}
+            </div>
         </div>
     );
 }

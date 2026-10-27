@@ -28,10 +28,9 @@
     transition: background-color 0.2s;
 }
 
-/* Стили для активного слайда */
 .active {
-    background-color: #e3f2fd; /* Голубоватый фон */
-    outline: 2px solid #007bff; /* Синяя рамка */
+    background-color: #e3f2fd; 
+    outline: 2px solid #007bff; 
 }
 
 .slideNumber {

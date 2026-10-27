@@ -11,7 +11,6 @@ interface AppProps {
 }
 
 function App({ presentation }: AppProps) {
-    // Проверяем, включен ли режим предпросмотра
     if (getPreviewMode()) {
         return (
             <PreviewOverlay 

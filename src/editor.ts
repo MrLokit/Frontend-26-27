@@ -16,7 +16,7 @@ function setInitialState(presentation: Presentation): void {
 /* Устанавливает начальное состояние презентации. */
     currentPresentation = presentation;
     if (presentation.slides.length > 0) {
-        activeSlideId = presentation.slides[0].id; // <-- добавили
+        activeSlideId = presentation.slides[0].id;
     }
 }
 
@@ -41,7 +41,7 @@ function dispatch(modifier: Modifier, params: any = null): void {
 }
 
 function addEditorChangeHandler(handler: () => void): void {
-/* Добавляет обработчик изменения модели редактора (подписка).
+/* Добавляет обработчик изменения модели редактора.
    Вызывается при каждом изменении состояния. */
     editorChangeHandler = handler;
 }
@@ -50,9 +50,10 @@ let isPreviewMode = false;
 let previewSlideIndex = 0;
 
 function setPreviewMode(mode: boolean): void {
+/* Вкл/Выкл предпросмотра */
     isPreviewMode = mode;
     if (mode) {
-        previewSlideIndex = 0; // При открытии всегда начинаем с первого
+        previewSlideIndex = 0;
     }
     if (editorChangeHandler) {
         editorChangeHandler();
@@ -60,10 +61,12 @@ function setPreviewMode(mode: boolean): void {
 }
 
 function getPreviewMode(): boolean {
+/* Вкл/Выкл режим предпросмотра*/
     return isPreviewMode;
 }
 
 function setPreviewSlideIndex(index: number): void {
+/* Меняет счетчик слайдов в предпосмотре */
     previewSlideIndex = index;
     if (editorChangeHandler) {
         editorChangeHandler();
@@ -96,6 +99,6 @@ export {
     getPreviewMode,
     setActiveSlideId,
     getActiveSlideId,
-    setPreviewSlideIndex, // <-- новое
-    getPreviewSlideIndex, // <-- новое
+    setPreviewSlideIndex, 
+    getPreviewSlideIndex, 
 };

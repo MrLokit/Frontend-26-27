@@ -7,7 +7,6 @@ interface ButtonProps {
 }
 
 function Button({ text, onClick, className = '' }: ButtonProps) {
-    // Собираем классы: базовый стиль + переданный извне (если есть)
     const buttonClassName = `${styles.button} ${className}`.trim();
 
     return (

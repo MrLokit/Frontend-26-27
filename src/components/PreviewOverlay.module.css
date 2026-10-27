@@ -8,7 +8,7 @@
     z-index: 1000;
     display: flex;
     flex-direction: column;
-    outline: none; /* Убираем рамку фокуса */
+    outline: none;
 }
 
 .topBar {
@@ -44,16 +44,19 @@
     align-items: center;
     justify-content: center;
     gap: 40px;
-    padding: 20px;
+    padding: 0 40px;
 }
 
 .slideWrapper {
-    /* Увеличиваем слайд для полноэкранного режима */
-    transform: scale(1.2);
+    width: 80%; 
+    max-width: 1000px;
+    display: flex;
+    justify-content: center;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
 .navBtn {
+    flex-shrink: 0;
     background: rgba(255, 255, 255, 0.1);
     color: white;
     border: none;
@@ -62,6 +65,7 @@
     cursor: pointer;
     border-radius: 8px;
     transition: background 0.2s;
+    z-index: 10;
 }
 
 .navBtn:hover:not(:disabled) {

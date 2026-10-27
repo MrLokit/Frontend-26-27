@@ -15,7 +15,6 @@ function TextInput({
     onChange, 
     className = '' 
 }: TextInputProps) {
-    // Обработчик изменения значения
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (onChange) {
             onChange(e.target.value);

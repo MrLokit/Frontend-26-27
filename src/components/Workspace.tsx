@@ -1,5 +1,6 @@
+// Центральная часть (слайд и свойства)
 import type { Presentation } from '../index.js';
-import { getActiveSlideId } from '../editor.js'; // <-- импорт
+import { getActiveSlideId } from '../editor.js';
 import { SlidePreview } from './SlidePreview.js';
 import { SlideProperties } from './SlideProperties.js';
 import styles from './Workspace.module.css';
@@ -9,7 +10,6 @@ interface WorkspaceProps {
 }
 
 function Workspace({ presentation }: WorkspaceProps) {
-    // Получаем ID активного слайда
     const activeId = getActiveSlideId();
     
     // Ищем нужный слайд в массиве

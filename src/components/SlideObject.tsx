@@ -1,3 +1,4 @@
+// Рисует конкретный текст или картинку на слайде
 import type { SlideObject as SlideObjectType } from '../index.js';
 import styles from './SlideObject.module.css';
 
@@ -6,7 +7,6 @@ interface SlideObjectProps {
 }
 
 function SlideObject({ object }: SlideObjectProps) {
-    // Базовые стили позиционирования, общие для всех объектов
     const baseStyles: React.CSSProperties = {
         position: 'absolute',
         left: object.x,
@@ -15,7 +15,6 @@ function SlideObject({ object }: SlideObjectProps) {
         height: object.height,
     };
 
-    // Если это текст
     if (object.type === 'text') {
         return (
             <div
@@ -32,7 +31,6 @@ function SlideObject({ object }: SlideObjectProps) {
         );
     }
 
-    // Если это картинка
     return (
         <img
             className={styles.imageObject}

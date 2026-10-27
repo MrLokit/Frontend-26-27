@@ -1,3 +1,4 @@
+// Информация о слайде
 import type { Slide } from '../index.js';
 import styles from './SlideProperties.module.css';
 

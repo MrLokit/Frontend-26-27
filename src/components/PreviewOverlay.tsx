@@ -54,7 +54,7 @@ function PreviewOverlay({ presentation, onClose }: PreviewOverlayProps) {
                     onClick={handlePrev} 
                     disabled={currentIndex === 0}
                 >
-                    ← Назад
+                    Назад
                 </button>
 
                 <div className={styles.slideWrapper}>
@@ -66,7 +66,7 @@ function PreviewOverlay({ presentation, onClose }: PreviewOverlayProps) {
                     onClick={handleNext} 
                     disabled={currentIndex === totalSlides - 1}
                 >
-                    Далее →
+                    Далее
                 </button>
             </div>
         </div>
